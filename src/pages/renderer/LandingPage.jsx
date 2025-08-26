@@ -81,7 +81,7 @@ const LandingPage = () => {
     dispatch(getAllCountUsers());
   }, [dispatch]);
 
-   const deliveredCount = useSelector((state) => state.auth?.user?.data) ?? 0;
+   const deliveredCount = useSelector((state) => state.auth?.count?.data) ?? 0;
   const displayCount = typeof deliveredCount === "object" ? JSON.stringify(deliveredCount) : deliveredCount;
 
 
