@@ -10,7 +10,7 @@ export default function AboutPage() {
     dispatch(getAllCountUsers());
   }, [dispatch]);
 
-const deliveredCount = useSelector((state) => state.auth?.user?.data) ?? 0;
+const deliveredCount = useSelector((state) => state.auth?.count?.data) ?? 0;
 
   // Ensure deliveredCount is always primitive
   let displayCount;
