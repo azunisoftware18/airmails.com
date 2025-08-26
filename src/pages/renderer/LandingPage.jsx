@@ -81,10 +81,12 @@ const LandingPage = () => {
     dispatch(getAllCountUsers());
   }, [dispatch]);
 
-  const deliveredCount = useSelector((state) => state.auth?.user?.data) ?? 0;
+   const deliveredCount = useSelector((state) => state.auth?.user?.data) ?? 0;
+  const displayCount = typeof deliveredCount === "object" ? JSON.stringify(deliveredCount) : deliveredCount;
+
 
   const stats = [
-    { number: deliveredCount, label: "Emails Delivered" },
+    { number: displayCount, label: "Emails Delivered" },
     { number: "99.9%", label: "Uptime Guarantee" },
     { number: "24/7", label: "Expert Support" },
   ];
@@ -149,7 +151,7 @@ const LandingPage = () => {
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
-                  {stat.number}
+                  {stat.number === deliveredCount ? displayCount : stat.number}
                 </div>
                 <div className="text-gray-600 font-medium">{stat.label}</div>
               </div>
