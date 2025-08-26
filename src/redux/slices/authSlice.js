@@ -11,6 +11,7 @@ const storedUser = localStorage.getItem("currentUser");
 const initialState = {
   user: [],
   adminsData: [],
+  count: null,
   currentUserData: storedUser ? JSON.parse(storedUser) : null,
   isLoading: false,
   error: null,
@@ -37,6 +38,11 @@ const authSlice = createSlice({
       state.success = action.payload?.message || null;
       state.error = null;
       localStorage.setItem("currentUser", JSON.stringify(userData));
+    },
+    countSuccess: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      state.count = action.payload;
     },
     allDataSuccess: (state, action) => {
       state.isLoading = false;
@@ -78,6 +84,7 @@ export const {
   authFail,
   silentAuthFail,
   allDataSuccess,
+  countSuccess,
   logoutUser,
 } = authSlice.actions;
 
@@ -209,7 +216,7 @@ export const getAllCountUsers = () => async (dispatch) => {
   try {
     dispatch(authRequest());
     const { data } = await axios.get(`${baseURL}/auth/get-users-count`);
-    dispatch(authSuccess(data));
+    dispatch(countSuccess(data));
     return data;
   } catch (error) {
     const errMsg = error?.response?.data?.message || error?.message;
