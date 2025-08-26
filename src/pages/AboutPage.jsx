@@ -10,11 +10,24 @@ export default function AboutPage() {
     dispatch(getAllCountUsers());
   }, [dispatch]);
 
-  const deliveredCount = useSelector((state) => state.auth?.user?.data) ?? 0;
-    const displayCount =
-    typeof deliveredCount === "object"
-      ? JSON.stringify(deliveredCount)
-      : deliveredCount;
+const deliveredCount = useSelector((state) => state.auth?.user?.data) ?? 0;
+
+  // Ensure deliveredCount is always primitive
+  let displayCount;
+  if (deliveredCount === null || deliveredCount === undefined) {
+    displayCount = 0;
+  } else if (typeof deliveredCount === "object") {
+    // Extract known property if available
+    displayCount = deliveredCount.message ?? deliveredCount.count ?? JSON.stringify(deliveredCount);
+  } else {
+    displayCount = deliveredCount;
+  }
+
+  const stats = [
+    { k: "99.9% Uptime" },
+    { k: "24/7 Support", v: "Human assistance" },
+    { k: displayCount.toString(), v: "Growing fast" }, // ensure string
+  ];
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 my-16">
@@ -48,16 +61,9 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="grid sm:grid-cols-3 gap-4 mb-12">
-        {[
-          { k: "99.9% Uptime" },
-          { k: "24/7 Support", v: "Human assistance" },
-          { k: displayCount, v: "Growing fast" },
-        ].map((s) => (
-          <div
-            key={s.k}
-            className="p-5 bg-white rounded-2xl shadow text-center"
-          >
+     <section className="grid sm:grid-cols-3 gap-4 mb-12">
+        {stats.map((s) => (
+          <div key={s.k} className="p-5 bg-white rounded-2xl shadow text-center">
             <div className="text-2xl font-bold">{s.k}</div>
             <div className="text-gray-600">{s.v}</div>
           </div>
