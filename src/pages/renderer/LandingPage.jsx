@@ -151,7 +151,7 @@ const LandingPage = () => {
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">
-                  {stat.number === deliveredCount ? displayCount : stat.number}
+                  {stat.number}
                 </div>
                 <div className="text-gray-600 font-medium">{stat.label}</div>
               </div>
