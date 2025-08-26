@@ -11,6 +11,11 @@ export default function AboutPage() {
   }, [dispatch]);
 
   const deliveredCount = useSelector((state) => state.auth?.user?.data) ?? 0;
+    const displayCount =
+    typeof deliveredCount === "object"
+      ? JSON.stringify(deliveredCount)
+      : deliveredCount;
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 my-16">
       {/* Hero */}
@@ -47,7 +52,7 @@ export default function AboutPage() {
         {[
           { k: "99.9% Uptime" },
           { k: "24/7 Support", v: "Human assistance" },
-          { k: deliveredCount, v: "Growing fast" },
+          { k: displayCount, v: "Growing fast" },
         ].map((s) => (
           <div
             key={s.k}
