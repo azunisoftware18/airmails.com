@@ -29,7 +29,7 @@ export const PricingSection = ({
 
   const plans = [
     {
-      plan: "FREE (8 Days Trial)",
+      plan: "FREE",
       price: 0,
       features: {
         maxMailboxes: 1,
@@ -107,15 +107,34 @@ export const PricingSection = ({
     return `₹${price.toLocaleString("en-IN")}`;
   };
 
+  const handleFreeSubscription = async () => {
+    setIsProcessing(true);
+    try {
+      await dispatch(
+        createOrRenewSubscriptionAction({
+          plan: "FREE",
+          billingCycle: "MONTHLY",
+        })
+      ).unwrap();
+
+      await dispatch(getMySubscription());
+      toast.success("Free plan activated successfully!");
+      navigate("/admin/dashboard");
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
   const handleSubscribe = async (planObj) => {
-    if (!currentUserData.success == false) {
+    if (currentUserData === null || currentUserData.success == false) {
       navigate("/login");
       return;
     }
 
-    // FREE plan guard (optional)
-    if ((planObj?.price ?? 0) === 0) {
-      toast.info("Free plan selected — no payment needed.");
+    if ((planObj?.price ?? 0) === 0 || planObj?.plan === "FREE") {
+      handleFreeSubscription();
       return;
     }
 
@@ -278,7 +297,7 @@ export const PricingSection = ({
                   {isProcessing
                     ? "Processing..."
                     : plan.price === 0
-                    ? "Start Free"
+                    ? "Start Free (8 Days Trial)"
                     : "Subscribe Now"}
                 </button>
               </div>
