@@ -29,7 +29,7 @@ function Navbar({ setSidebarOpen }) {
       </div>
 
       {/* App Name or Title */}
-      <h1 className="text-lg font-bold text-gray-800 strong">Airmails</h1>
+      <h1 className="text-lg font-bold text-gray-800 strong">Airmailo</h1>
 
       {/* User Icon */}
       <div className="flex items-center gap-3 relative">

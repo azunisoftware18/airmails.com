@@ -21,7 +21,7 @@ const RendererNavbar = () => {
                 <Mail className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                Airmails
+                Airmailo
               </span>
             </div>
             <div className="text-sm hidden sm:block text-gray-600">
@@ -55,7 +55,7 @@ const RendererNavbar = () => {
                 <Mail className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                Airmails
+                Airmailo
               </span>
             </div>
             <div className="text-sm text-gray-600 hidden sm:block">
@@ -90,7 +90,7 @@ const RendererNavbar = () => {
                 <Mail className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-                Airmails
+                Airmailo
               </span>
             </div>
 

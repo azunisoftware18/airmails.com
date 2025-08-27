@@ -188,7 +188,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, onCompose }) {
             {/* </div> */}
           </div>
           <h2 className="text-lg font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
-            Airmails
+            Airmailo
           </h2>
 
           <button

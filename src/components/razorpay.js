@@ -72,7 +72,7 @@ export const processPaidSubscription = async (
       key: import.meta.env.VITE_RAZORPAY_KEY_ID,
       amount: orderData.amount, // paise
       currency: orderData.currency, // "INR"
-      name: "Airmails",
+      name: "Airmailo",
       description: `${plan} ${cycle} ${
         mode === "RENEW" ? "– Renew" : "Subscription"
       }`,

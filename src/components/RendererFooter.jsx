@@ -74,13 +74,13 @@ const RendererFooter = () => {
               <Mail className="w-5 h-5 text-white" />
             </div>
             <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent">
-              Airmails
+              Airmailo
             </span>
           </div>
 
           <div className="text-center md:text-right">
             <p className="text-sm text-gray-800 mb-2">
-              © {year} Airmails. All rights reserved.
+              © {year} Airmailo. All rights reserved.
             </p>
             <div className="flex flex-wrap justify-center md:justify-end gap-4 text-xs text-gray-700">
               <Link
@@ -119,7 +119,7 @@ const RendererFooter = () => {
                 <div className="w-10 h-10 bg-blue-600 rounded-xl grid place-items-center">
                   <Mail className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-2xl font-bold">Airmails</span>
+                <span className="text-2xl font-bold">Airmailo</span>
               </div>
               <p className="text-gray-700 mb-6 leading-relaxed">
                 The professional email platform trusted by thousands of
@@ -137,11 +137,11 @@ const RendererFooter = () => {
                   +91-7412066477
                 </a>
                 <a
-                  href="mailto:hello@Airmails.com"
+                  href="mailto:hello@Airmailo.com"
                   className="flex items-center hover:text-blue-700"
                 >
                   <Mail className="w-5 h-5 mr-3" />
-                  hello@Airmails.com
+                  hello@Airmailo.com
                 </a>
                 <div className="flex items-start">
                   <MapPin className="w-5 h-5 mr-3 mt-0.5" />
@@ -209,7 +209,7 @@ const RendererFooter = () => {
 
           {/* Bottom bar */}
           <div className="mt-12 pt-6 border-t border-blue-100 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-700">
-            <p>© {year} Airmails. All rights reserved.</p>
+            <p>© {year} Airmailo. All rights reserved.</p>
             <div className="flex flex-wrap gap-4">
               <Link to="/privacy-policy" className="hover:text-blue-700">
                 Privacy Policy
