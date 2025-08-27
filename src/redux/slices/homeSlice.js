@@ -86,7 +86,7 @@ export const allTestimonials = () => async (dispatch) => {
     dispatch(dataSuccess(data));
   } catch (error) {
     const errMsg = error?.response?.data?.message || error?.message;
-    dispatch(requestFail(errMsg));
+    // dispatch(request Fail(errMsg));
     return { message: errMsg };
   }
 };

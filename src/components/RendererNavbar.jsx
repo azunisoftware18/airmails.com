@@ -8,7 +8,7 @@ const RendererNavbar = () => {
   const currentLocation = useLocation().pathname;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200/50">
+    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200/50 z-50">
       {currentLocation === "/login" ? (
         // Login page header
         <div className="px-4 sm:px-6 lg:px-8">

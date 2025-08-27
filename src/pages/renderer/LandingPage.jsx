@@ -81,9 +81,11 @@ const LandingPage = () => {
     dispatch(getAllCountUsers());
   }, [dispatch]);
 
-   const deliveredCount = useSelector((state) => state.auth?.count?.data) ?? 0;
-  const displayCount = typeof deliveredCount === "object" ? JSON.stringify(deliveredCount) : deliveredCount;
-
+  const deliveredCount = useSelector((state) => state.auth?.count?.data) ?? 0;
+  const displayCount =
+    typeof deliveredCount === "object"
+      ? JSON.stringify(deliveredCount)
+      : deliveredCount;
 
   const stats = [
     { number: displayCount, label: "Emails Delivered" },
@@ -96,7 +98,7 @@ const LandingPage = () => {
   return (
     <div className="pt-16">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gray-50">
+      <section className="relative min-h-screen flex items-center justify-center bg-gray-50 my-12 sm:my-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="inline-flex items-center px-4 py-2 bg-blue-100 rounded-full text-blue-800 text-sm font-medium mb-8">
             <Zap className="w-4 h-4 mr-2" />
