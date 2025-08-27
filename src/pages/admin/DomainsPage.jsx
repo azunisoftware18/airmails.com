@@ -354,7 +354,7 @@ function DomainsPage() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen">
       {/* Header */}
       <Header
         setEditFormData={setEditDomainData}

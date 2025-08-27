@@ -83,7 +83,7 @@ function SettingsPage() {
     : "—";
 
   return (
-    <div className="relative  space-y-6">
+    <div className="relative  space-y-6 min-h-screen">
       {/* Header */}
       <div className="flex justify-between lg:items-center flex-col lg:flex-row">
         <Header

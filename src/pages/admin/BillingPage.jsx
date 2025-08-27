@@ -622,7 +622,7 @@ export default function BillingPage() {
   };
 
   return (
-    <div>
+    <div >
       {/* Header */}
       <div className="mb-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <Header

@@ -151,7 +151,7 @@ function MailboxesPage() {
   ];
 
   return (
-    <div className="">
+    <div className="min-h-screen">
       {/* Header */}
       <Header
         setEditFormData={setEditMailbox}

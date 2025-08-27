@@ -9,7 +9,7 @@ function RendererPageLayout() {
       <main className="flex-grow overflow-hidden">
         <Outlet />
       </main>
-      <div className="overflow-hidden">
+      <div>
         <RendererFooter />
       </div>
     </div>
