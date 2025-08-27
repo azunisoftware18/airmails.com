@@ -164,7 +164,6 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, onCompose }) {
   return (
     <aside
       className={[
-        // glass + border + shadow (theme)
         "bg-white/80 backdrop-blur-sm border border-white/20 shadow-xl z-10",
         "w-72 fixed top-0 left-0 h-screen",
         "transform transition-transform duration-300",
@@ -175,21 +174,21 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, onCompose }) {
       {/* Header */}
       <div className="p-5 border-b border-white/30">
         <div className="flex items-center gap-3 ">
-          <div className="relative">
+          <div className="relative w-full flex items-center justify-center">
             {/* <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 blur opacity-40" />
             <div className="relative w-9 h-9 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center"> */}
             {/* <Zap className="w-5 h-5 text-white" /> */}
             <img
-              src="https://sdmntpraustraliaeast.oaiusercontent.com/files/00000000-c0d4-61fa-99d7-d202df47bb65/raw?se=2025-08-25T13%3A08%3A36Z&sp=r&sv=2024-08-04&sr=b&scid=7cd937fa-5d9b-507b-8625-0f2c8f4ecd8c&skoid=f8b66c09-1aa0-4801-9884-173c5cef2b8c&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-24T23%3A56%3A52Z&ske=2025-08-25T23%3A56%3A52Z&sks=b&skv=2024-08-04&sig=W8AVh9nLDxy3fHmO36sQmCKrLMS47PPGuh0QV1s9CU4%3D"
-              alt=""
-              srcset=""
-              className="w-8 h-8"
+              src="/airmailo-logo.png"
+              alt="airmailo-logo"
+              className="w-40 object-contain"
             />
+
             {/* </div> */}
           </div>
-          <h2 className="text-lg font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
+          {/* <h2 className="text-lg font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
             Airmailo
-          </h2>
+          </h2> */}
 
           <button
             onClick={() => setSidebarOpen(false)}

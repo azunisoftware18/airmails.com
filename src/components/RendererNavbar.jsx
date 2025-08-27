@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Mail, Menu, X, ArrowRight } from "lucide-react";
+import { Mail, Menu, X, ArrowRight, User } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const RendererNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const currentLocation = useLocation().pathname;
+
+  const currentUserData = useSelector((state) => state.auth?.currentUserData);
 
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-200/50 z-50">
@@ -129,21 +132,44 @@ const RendererNavbar = () => {
             </div>
 
             {/* Desktop CTA */}
-            <div className="hidden md:flex items-center space-x-3">
-              <button
-                onClick={() => navigate("/login")}
-                className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50"
+            {currentUserData?.role === "ADMIN" ? (
+              <div
+                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:from-blue-700 hover:to-blue-800 duration-200 font-medium shadow-lg hover:shadow-xl cursor-pointer"
+                onClick={() => navigate("/admin/dashboard")}
               >
-                Sign In
-              </button>
-              <button
-                onClick={() => navigate("/register")}
-                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center gap-2 group"
+                Admin Console
+              </div>
+            ) : currentUserData?.role === "SUPER_ADMIN" ? (
+              <div
+                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:from-blue-700 hover:to-blue-800 duration-200 font-medium shadow-lg hover:shadow-xl cursor-pointer"
+                onClick={() => navigate("/superadmin/dashboard")}
               >
-                Get Started
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
-              </button>
-            </div>
+                Super Admin Console
+              </div>
+            ) : currentUserData?.role === "USER" ? (
+              <div
+                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:from-blue-700 hover:to-blue-800 duration-200 font-medium shadow-lg hover:shadow-xl cursor-pointer"
+                onClick={() => navigate("/u/inbox")}
+              >
+                <User />
+              </div>
+            ) : (
+              <div className="hidden md:flex items-center space-x-3">
+                <button
+                  onClick={() => navigate("/login")}
+                  className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50"
+                >
+                  Sign In
+                </button>
+                <button
+                  onClick={() => navigate("/register")}
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2.5 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 inline-flex items-center gap-2 group"
+                >
+                  Get Started
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" />
+                </button>
+              </div>
+            )}
 
             {/* Mobile Menu Button */}
             <button

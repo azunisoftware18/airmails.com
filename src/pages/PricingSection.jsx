@@ -175,7 +175,7 @@ export const PricingSection = ({
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Airmailo</h1>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Subscribe Now</h1>
           <p className="text-xl text-gray-600">
             Choose the perfect plan for your email management needs
           </p>

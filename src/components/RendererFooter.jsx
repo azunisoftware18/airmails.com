@@ -143,14 +143,14 @@ const RendererFooter = () => {
                   <Mail className="w-5 h-5 mr-3" />
                   hello@Airmailo.com
                 </a>
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <MapPin className="w-5 h-5 mr-3 mt-0.5" />
                   <address className="not-italic">
                     P. No. 78, Karani Nagar,
                     <br /> Jhotwara (302012), Jaipur,
                     <br /> Rajasthan, India
                   </address>
-                </div>
+                </div> */}
               </div>
 
               {/* Social */}

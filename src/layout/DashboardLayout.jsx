@@ -47,19 +47,13 @@ export default function DashboardLayout() {
         <Navbar setSidebarOpen={setSidebarOpen} />
 
         <main className=" flex-1 grid grid-rows-[1fr_auto] overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50">
-          {/* Background Blobs */}
-          <div className="pointer-events-none  inset-0">
-            <div className="absolute -top-40 -left-40 w-80 h-80 bg-gradient-to-tr from-blue-400/20 to-indigo-300/20 rounded-full blur-3xl" />
-            <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-gradient-to-tl from-cyan-400/20 to-blue-300/20 rounded-full blur-3xl" />
-          </div>
-
           <div className="overflow-y-auto p-6 sm:p-8">
             {/* Loading overlay (glass chip) */}
             {loading && <Loading />}
 
             <Outlet context={{ openCompose }} />
             {/* Footer (always bottom of main) */}
-            <div className=" mt-7">
+            <div className="mt-7">
               <Footer />
             </div>
           </div>

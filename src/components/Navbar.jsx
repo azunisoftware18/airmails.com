@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function Navbar({ setSidebarOpen }) {
   const { currentUserData } = useSelector((state) => state.auth);
   return (
-    <div className="flex items-center justify-between px-4 py-3 bg-white border-b shadow-sm">
+    <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-gray-300 shadow-sm">
       {/* Hamburger Button (Mobile Only) */}
       <div className="lg:hidden">
         <button
