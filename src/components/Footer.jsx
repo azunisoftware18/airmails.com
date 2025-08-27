@@ -1,6 +1,6 @@
 function Footer() {
   return (
-    <div className="text-[11px] sm:text-xs flex justify-center items-center py-5 bg-white/10 backdrop-blur-md">
+    <div className="text-[11px] hidden sm:flex sm:text-xs  justify-center items-center py-5 bg-white/10 backdrop-blur-md">
       <span>
         Developed by{" "}
         <strong

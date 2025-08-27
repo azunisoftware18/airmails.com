@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addArchive,
@@ -159,8 +159,7 @@ export default function EmailDetailsPage() {
       if (!detailData?.id) return;
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_BASE_URL}/mail/body/${
-            detailData.sentAt ? "SENT" : "RECEIVED"
+          `${import.meta.env.VITE_API_BASE_URL}/mail/body/${detailData.sentAt ? "SENT" : "RECEIVED"
           }/${detailData.id}`
         );
         if (res.data?.data?.bodyUrl) {
@@ -237,6 +236,9 @@ export default function EmailDetailsPage() {
   const handleArchive = (mailId) => {
     dispatch(addArchive(mailId));
   };
+
+  const { openCompose } = useOutletContext();
+
 
   return (
     <>
@@ -324,16 +326,14 @@ export default function EmailDetailsPage() {
                   <div className="flex items-center gap-2 ml-4">
                     <button
                       onClick={() => handleStarred(email.id, email.isStarred)}
-                      className={`p-2 rounded-lg transition-colors ${
-                        email.isStarred
-                          ? "bg-yellow-100 text-yellow-600 hover:bg-yellow-200"
-                          : "bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-600"
-                      }`}
+                      className={`p-2 rounded-lg transition-colors ${email.isStarred
+                        ? "bg-yellow-100 text-yellow-600 hover:bg-yellow-200"
+                        : "bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-600"
+                        }`}
                     >
                       <Star
-                        className={`w-4 h-4 ${
-                          email.isStarred ? "fill-current" : ""
-                        }`}
+                        className={`w-4 h-4 ${email.isStarred ? "fill-current" : ""
+                          }`}
                       />
                     </button>
 
@@ -514,14 +514,14 @@ export default function EmailDetailsPage() {
           </div>
 
           {/* Desktop Actions */}
-          <div className="hidden sm:flex items-center justify-between p-4 sm:p-6 bg-gray-50 border-t border-gray-100">
+          <div className="grid grid-cols-1 space-y-3.5 space-x-2 sm:flex items-center justify-between p-4 sm:p-6 bg-gray-50 border-t border-gray-100">
             <div className="flex items-center gap-3">
-              <button className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-sm font-medium shadow-sm">
+              <button onClick={() => openCompose("reply", detailData)} className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors text-sm font-medium shadow-sm">
                 <Reply className="w-4 h-4" />
                 Reply
               </button>
 
-              <button className="flex items-center gap-2 px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium border border-gray-200">
+              <button onClick={() => openCompose("forward", detailData)} className="flex items-center gap-2 px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium border border-gray-200">
                 <Forward className="w-4 h-4" />
                 Forward
               </button>
@@ -530,11 +530,10 @@ export default function EmailDetailsPage() {
             <div className="flex items-center gap-3">
               <span
                 disabled={email.isArchive}
-                className={`flex items-center gap-2 px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium border border-gray-200 ${
-                  email.isArchive == true
-                    ? "cursor-not-allowed"
-                    : "cursor-pointer"
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 bg-white text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-medium border border-gray-200 ${email.isArchive == true
+                  ? "cursor-not-allowed"
+                  : "cursor-pointer"
+                  }`}
                 onClick={() => handleArchive(email.id)}
               >
                 <Archive className="w-4 h-4" />
@@ -544,61 +543,6 @@ export default function EmailDetailsPage() {
               <div className="text-xs text-gray-500 px-2">{email.size}</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Mobile Bottom Actions */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg backdrop-blur-sm ">
-        <div className="p-4 pb-6">
-          <div className="flex items-center justify-between mb-4">
-            <button
-              onClick={() => setShowMobileActions(!showMobileActions)}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm font-medium"
-            >
-              <span>Quick Actions</span>
-              {showMobileActions ? (
-                <ChevronUp className="w-4 h-4" />
-              ) : (
-                <ChevronDown className="w-4 h-4" />
-              )}
-            </button>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => handleStarred(email.id, email.isStarred)}
-                className={`p-2 rounded-lg transition-colors ${
-                  email.isStarred
-                    ? "bg-yellow-100 text-yellow-600"
-                    : "bg-gray-100 text-gray-600"
-                }`}
-              >
-                <Star
-                  className={`w-4 h-4 ${email.isStarred ? "fill-current" : ""}`}
-                />
-              </button>
-            </div>
-          </div>
-
-          {showMobileActions && (
-            <div className="grid grid-cols-2 gap-2 mb-4 animate-in fade-in slide-in-from-bottom-2 duration-200">
-              <button className="flex items-center justify-center gap-2 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium">
-                <Forward className="w-4 h-4" />
-                Forward
-              </button>
-              <button className="flex items-center justify-center gap-2 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium">
-                <Archive className="w-4 h-4" />
-                Archive
-              </button>
-              <button className="flex items-center justify-center gap-2 px-3 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium">
-                <Trash2 className="w-4 h-4" />
-                Delete
-              </button>
-            </div>
-          )}
-
-          <button className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-violet-600 text-white rounded-xl hover:bg-violet-700 transition-colors font-medium shadow-lg">
-            <Reply className="w-4 h-4" />
-            Reply
-          </button>
         </div>
       </div>
     </>

@@ -93,6 +93,11 @@ const mailSlice = createSlice({
       state.list = action.payload;
       state.error = null;
     },
+    newReceivedCountSuccess: (state, action) => {
+      state.isLoading = false;
+      state.newReceivedCount = action.payload;
+      state.error = null;
+    },
   },
 });
 
@@ -111,6 +116,7 @@ export const {
   getArchiveMails,
   addStarredSuccess,
   getAllStarredSuccess,
+  newReceivedCountSuccess,
 } = mailSlice.actions;
 
 export const getAllMails = () => async (dispatch) => {
@@ -302,7 +308,7 @@ export const newAllCountReceivedMails = () => async (dispatch) => {
   try {
     dispatch(mailRequest());
     const { data } = await axios.get(`${baseURL}/mail/new-received-count`);
-    dispatch(mailSuccess(data.data))
+    dispatch(newReceivedCountSuccess(data.data))
     return data
   } catch (error) {
     const errMsg = error?.response?.data?.message || error?.message;

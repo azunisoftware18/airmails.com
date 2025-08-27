@@ -53,7 +53,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, onCompose }) {
       icon: <Inbox className="w-5 h-5" />,
       label: "Inbox",
       path: "/:role/inbox",
-      count: newReceivedCount,
+      count: newReceivedCount?.count,
       roles: ["USER"],
     },
     {

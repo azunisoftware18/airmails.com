@@ -119,7 +119,7 @@ export default function MailHeader({
             </button>
 
             {showFilters && (
-              <div className="absolute top-full right-0 mt-3 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/40 p-6 min-w-80 ">
+              <div className="absolute top-full right-0 mt-3 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-white/40 p-6 min-w-80 z-50">
                 <div className="absolute -top-2 right-8 w-4 h-4 bg-white/95 border-l border-t border-white/40 rotate-45"></div>
                 <div className="flex gap-6 w-full">
                   <div className="flex-1">
