@@ -1,4 +1,3 @@
-// src/components/razorpay.js
 export const loadRazorpay = () =>
   new Promise((resolve) => {
     if (window.Razorpay) return resolve(true);

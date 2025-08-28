@@ -24,15 +24,15 @@ const Dashboard = () => {
 
   const [dashboardData, setDashboardData] = useState(null);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAlldashboardData());
+  }, [dispatch]);
+
   const fechedDashboardData = useSelector(
     (state) => state.dashboard.dashboardData || []
   );
-
-  useEffect(() => {
-    if (!fechedDashboardData) {
-      dispatch(getAlldashboardData());
-    }
-  }, [dispatch, fechedDashboardData]);
+  console.log("fechedDashboardData", fechedDashboardData);
 
   useEffect(() => {
     const timer = setTimeout(() => {
