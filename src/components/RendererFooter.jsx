@@ -137,11 +137,11 @@ const RendererFooter = () => {
                   +91-7412066477
                 </a>
                 <a
-                  href="mailto:hello@Airmailo.com"
+                  href="mailto:info@airmailo.com"
                   className="flex items-center hover:text-blue-700"
                 >
                   <Mail className="w-5 h-5 mr-3" />
-                  hello@Airmailo.com
+                  info@airmailo.com
                 </a>
                 {/* <div className="flex items-start">
                   <MapPin className="w-5 h-5 mr-3 mt-0.5" />
