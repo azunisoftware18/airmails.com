@@ -32,7 +32,6 @@ const Dashboard = () => {
   const fechedDashboardData = useSelector(
     (state) => state.dashboard.dashboardData || []
   );
-  console.log("fechedDashboardData", fechedDashboardData);
 
   useEffect(() => {
     const timer = setTimeout(() => {

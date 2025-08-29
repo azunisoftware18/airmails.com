@@ -55,7 +55,6 @@ export const {
 
 // Create Razorpay order
 export const createRazorpayOrder = (orderData) => async (dispatch) => {
-  console.log("orderData", orderData);
 
   try {
     dispatch(subscriptionRequest());

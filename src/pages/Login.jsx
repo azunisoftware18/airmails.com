@@ -56,7 +56,7 @@ export default function Login() {
     setLoading(true);
     try {
       const resultAction = await dispatch(login(formData));
-      const user = resultAction.data;
+      const user = resultAction.payload?.user;
 
       switch (user.role.toUpperCase()) {
         case "SUPER_ADMIN":
