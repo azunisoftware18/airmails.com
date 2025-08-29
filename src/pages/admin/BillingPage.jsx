@@ -269,11 +269,11 @@ export default function BillingPage() {
       doc.text("INVOICE", pageW - M - 130, M + 46);
 
       // Status pill
-      const status = (invoice.status || "pending").toString().toLowerCase();
+      const status = (invoice?.status || "Pending").toString().toLowerCase();
       const pillColor =
-        status === "paid"
+        status === "PAID"
           ? theme.success
-          : status === "unpaid"
+          : status === "FAILED"
           ? theme.danger
           : theme.warning;
       const pillW = 90,
