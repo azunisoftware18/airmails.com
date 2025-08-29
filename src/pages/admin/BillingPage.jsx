@@ -269,7 +269,7 @@ export default function BillingPage() {
       doc.text("INVOICE", pageW - M - 130, M + 46);
 
       // Status pill
-      const status = (invoice.status || "Pending").toString().toLowerCase();
+      const status = (invoice.status).toString().toLowerCase();
       const pillColor =
         status === "paid"
           ? theme.success
@@ -698,7 +698,7 @@ export default function BillingPage() {
                   </div>
 
                   {/* Desktop Renew CTA */}
-                  {showRenewCTA && (
+                  {showRenewCTA && invoice.description !== "FEE Plan" (
                     <button
                       onClick={() =>
                         handleRenewNow(
