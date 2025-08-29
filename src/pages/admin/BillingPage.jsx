@@ -112,7 +112,7 @@ export default function BillingPage() {
           sub.endDate
         ).toLocaleDateString()}`,
         amount: inv.amount,
-        status: String(inv.status || "").trim().toLowerCase(),
+        status: String(inv.status).trim().toLowerCase(),
       }))
     );
   }, [subscriptionData]);
@@ -274,8 +274,8 @@ export default function BillingPage() {
         status === "PAID"
           ? theme.success
           : status === "FAILED"
-          ? theme.danger
-          : theme.warning;
+            ? theme.danger
+            : theme.warning;
       const pillW = 90,
         pillH = 24,
         pillX = pageW - M - 130,
@@ -410,12 +410,12 @@ export default function BillingPage() {
         Array.isArray(invoice.items) && invoice.items.length
           ? invoice.items
           : [
-              {
-                description: "Service/Product",
-                quantity: 1,
-                amount: parseAmount(invoice.amount) || 0,
-              },
-            ];
+            {
+              description: "Service/Product",
+              quantity: 1,
+              amount: parseAmount(invoice.amount) || 0,
+            },
+          ];
 
       const maxDescWidth = cols.qty - (cols.desc + 12);
       const rowGap = 26;
@@ -698,7 +698,7 @@ export default function BillingPage() {
                   </div>
 
                   {/* Desktop Renew CTA */}
-                  {showRenewCTA && subscription.plan !== "FREE" (
+                  {showRenewCTA && subscription.plan !== "FREE" && (
                     <button
                       onClick={() =>
                         handleRenewNow(
