@@ -164,7 +164,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, onCompose }) {
   return (
     <aside
       className={[
-        "bg-white/80 backdrop-blur-sm border border-white/20 shadow-xl z-10",
+        "bg-white/80 border border-white/20 shadow-xl z-10",
         "w-72 fixed top-0 left-0 h-screen",
         "transform transition-transform duration-300",
         sidebarOpen ? "translate-x-0" : "-translate-x-full",
