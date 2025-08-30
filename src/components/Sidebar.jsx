@@ -264,7 +264,7 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen, onCompose }) {
 
         <button
           onClick={() => dispatch(logout())}
-          className="mt-2 w-full flex items-center gap-3 px-3 py-2 rounded-xl text-red-600 hover:bg-red-50 transition"
+          className="mt-2 w-full flex items-center gap-3 px-3 py-2 rounded-xl text-red-600 transition"
         >
           <LogOut className="w-4 h-4" />
           <span className="text-sm">Logout</span>
