@@ -8,7 +8,7 @@ export default function useMailSearchFilter(mails = []) {
   const [sortOrder, setSortOrder] = useState("latest");
 
   const processedMails = useMemo(() => {
-    const filtered = safeMails.filter((mail) => {
+    const filtered = safeMails?.filter((mail) => {
       const matchesSearch =
         mail.fromEmail?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         mail.toEmail?.toLowerCase().includes(searchQuery.toLowerCase()) ||
