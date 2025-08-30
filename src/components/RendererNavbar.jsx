@@ -82,7 +82,7 @@ const RendererNavbar = () => {
         </div>
       ) : (
         // Home page navigation
-        <div className="px-4 sm:px-6 lg:px-8">
+        <div className="px-4 sm:px-6 lg:px-8  max-w-[98rem] mx-auto">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <div

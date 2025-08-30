@@ -92,7 +92,7 @@ const RendererFooter = () => {
   }
 
   return (
-    <footer className="bg-blue-50/30 text-gray-800">
+    <footer className="bg-blue-50/30 text-gray-800  max-w-[98rem] mx-auto">
       <div className="border-t border-blue-100">
         <div className="mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <div className="grid gap-10 lg:grid-cols-12">
@@ -105,8 +105,8 @@ const RendererFooter = () => {
                 <span className="text-2xl font-bold">Airmailo</span>
               </div>
               <p className="text-gray-700 mb-6 leading-relaxed">
-                The professional email platform trusted by thousands of
-                businesses worldwide. Secure, fast, and intelligent email
+                The professional email platform <br /> trusted by thousands of 
+                businesses worldwide.<br />  Secure, fast, and intelligent <br />  email
                 management for modern teams.
               </p>
 

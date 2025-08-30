@@ -97,7 +97,7 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="pt-16">
+    <div className="sm:pt-0 pt-16">
       {/* <ScrollToTop /> */}
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gray-50 my-12 sm:my-0">
