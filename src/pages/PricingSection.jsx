@@ -16,11 +16,13 @@ export const PricingSection = ({
   autoSubscribe = false,
 }) => {
   const [billingCycle, setBillingCycle] = useState("MONTHLY");
-  const [usdToInr, setUsdToInr] = useState(83);
+  // const [usdToInr, setUsdToInr] = useState(83);
+  const [usdToInr, setUsdToInr] = useState(1);
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
 
-  const lastRateRef = useRef(83);
+  // const lastRateRef = useRef(83);
+  const lastRateRef = useRef(1);
   const location = useLocation().pathname;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -75,7 +77,8 @@ export const PricingSection = ({
           "https://api.frankfurter.app/latest?from=USD&to=INR"
         );
         const data = await res.json();
-        const currentRate = data.rates.INR || 83;
+        // const currentRate = data.rates.INR || 83;
+        const currentRate = 1;
         lastRateRef.current = currentRate;
         setUsdToInr(currentRate);
       } catch (error) {
