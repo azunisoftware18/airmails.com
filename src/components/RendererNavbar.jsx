@@ -174,7 +174,11 @@ const RendererNavbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              className={`${
+                currentUserData
+                  ? "hidden"
+                  : "md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+              }`}
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6 text-gray-700" />
