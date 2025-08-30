@@ -18,7 +18,9 @@ export default function TrashPage() {
   useEffect(() => {
     dispatch(getTrash());
   }, [dispatch]);
-  const trashMails = useSelector((state) => state.mail.list || []);
+  const trashMails = useSelector((state) => state.mail.list);
+  const safeMails = Array.isArray(trashMails) ? trashMails : [];
+
 
 
   const loading = useSelector((state) => state.mail?.isLoading);
@@ -31,7 +33,7 @@ export default function TrashPage() {
     setFilterStatus,
     sortOrder,
     setSortOrder,
-  } = useMailSearchFilter(trashMails);
+  } = useMailSearchFilter(safeMails);
 
   // Toggle single mail selection
   const toggleSelect = (mailId) => {

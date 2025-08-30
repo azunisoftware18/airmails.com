@@ -1,12 +1,14 @@
 import { useState, useMemo } from "react";
 
 export default function useMailSearchFilter(mails = []) {
+  const safeMails = Array.isArray(mails) ? mails : [];
+
   const [searchQuery, setSearchQuery] = useState("");
   const [filterStatus, setFilterStatus] = useState("ALL");
   const [sortOrder, setSortOrder] = useState("latest");
 
   const processedMails = useMemo(() => {
-    const filtered = mails.filter((mail) => {
+    const filtered = safeMails.filter((mail) => {
       const matchesSearch =
         mail.fromEmail?.toLowerCase().includes(searchQuery.toLowerCase()) ||
         mail.toEmail?.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -25,7 +27,7 @@ export default function useMailSearchFilter(mails = []) {
     });
 
     return sorted;
-  }, [mails, searchQuery, filterStatus, sortOrder]);
+  }, [safeMails, searchQuery, filterStatus, sortOrder]);
 
   return {
     processedMails,
