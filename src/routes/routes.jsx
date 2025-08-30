@@ -31,6 +31,7 @@ import ContactPage from "../pages/ContactPage.jsx";
 import VerifySignup from "../pages/VerifySignup.jsx";
 import TestimonialsPage from "../pages/superadmin/TestimonialsPage.jsx";
 import Contact from "../pages/superadmin/Contact.jsx";
+import Help from "../pages/Help.jsx";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -42,6 +43,7 @@ export const router = createBrowserRouter(
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/help" element={<Help />} />
       </Route>
       <Route path="/signup-verify" element={<VerifySignup />} />
 

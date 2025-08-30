@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCountUsers } from "../redux/slices/authSlice";
 import { Link } from "react-router-dom";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function AboutPage() {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export default function AboutPage() {
     dispatch(getAllCountUsers());
   }, [dispatch]);
 
-const deliveredCount = useSelector((state) => state.auth?.count?.data) ?? 0;
+  const deliveredCount = useSelector((state) => state.auth?.count?.data) ?? 0;
 
   // Ensure deliveredCount is always primitive
   let displayCount;
@@ -18,7 +19,10 @@ const deliveredCount = useSelector((state) => state.auth?.count?.data) ?? 0;
     displayCount = 0;
   } else if (typeof deliveredCount === "object") {
     // Extract known property if available
-    displayCount = deliveredCount.message ?? deliveredCount.count ?? JSON.stringify(deliveredCount);
+    displayCount =
+      deliveredCount.message ??
+      deliveredCount.count ??
+      JSON.stringify(deliveredCount);
   } else {
     displayCount = deliveredCount;
   }
@@ -31,6 +35,7 @@ const deliveredCount = useSelector((state) => state.auth?.count?.data) ?? 0;
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-12 my-16">
+      <ScrollToTop />
       {/* Hero */}
       <section className="text-center mb-12">
         <h1 className="text-3xl md:text-4xl font-bold">About Us</h1>
@@ -61,9 +66,12 @@ const deliveredCount = useSelector((state) => state.auth?.count?.data) ?? 0;
       </section>
 
       {/* Stats */}
-     <section className="grid sm:grid-cols-3 gap-4 mb-12">
+      <section className="grid sm:grid-cols-3 gap-4 mb-12">
         {stats.map((s) => (
-          <div key={s.k} className="p-5 bg-white rounded-2xl shadow text-center">
+          <div
+            key={s.k}
+            className="p-5 bg-white rounded-2xl shadow text-center"
+          >
             <div className="text-2xl font-bold">{s.k}</div>
             <div className="text-gray-600">{s.v}</div>
           </div>

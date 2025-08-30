@@ -2,37 +2,32 @@ import React from "react";
 import {
   Mail,
   Phone,
-  MapPin,
   Twitter,
   Facebook,
   Linkedin,
   Instagram,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 const sections = [
   {
     title: "Product",
     links: [
-      { name: "Features", to: "/#features", external: false },
-      { name: "Pricing", to: "/#pricing", external: false },
+      { name: "Features", to: "/#features" },
+      { name: "Pricing", to: "/#pricing" },
     ],
   },
   {
     title: "Company",
     links: [
-      { name: "About Us", to: "/about", external: false },
-      { name: "Careers", to: "/careers", external: false },
-      { name: "Contact", to: "/contact", external: false },
+      { name: "About Us", to: "/about" },
+      { name: "Contact", to: "/contact" },
     ],
   },
   {
     title: "Support",
-    links: [
-      { name: "Help Center", to: "/help", external: false },
-      { name: "Privacy Policy", to: "/privacy-policy", external: false },
-      { name: "Terms of Service", to: "/terms-of-service", external: false },
-    ],
+    links: [{ name: "Help Center", to: "/help" }],
   },
 ];
 
@@ -84,22 +79,10 @@ const RendererFooter = () => {
             </p>
             <div className="flex flex-wrap justify-center md:justify-end gap-4 text-xs text-gray-700">
               <Link
-                to="/privacy-policy"
+                to="/help"
                 className="hover:text-blue-700 transition-colors"
               >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms-of-service"
-                className="hover:text-blue-700 transition-colors"
-              >
-                Terms of Service
-              </Link>
-              <Link
-                to="/security"
-                className="hover:text-blue-700 transition-colors"
-              >
-                Security
+                Help Center
               </Link>
             </div>
           </div>
@@ -111,7 +94,7 @@ const RendererFooter = () => {
   return (
     <footer className="bg-blue-50/30 text-gray-800">
       <div className="border-t border-blue-100">
-        <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <div className="grid gap-10 lg:grid-cols-12">
             {/* Brand + blurb */}
             <div className="lg:col-span-5">
@@ -143,14 +126,6 @@ const RendererFooter = () => {
                   <Mail className="w-5 h-5 mr-3" />
                   info@airmailo.com
                 </a>
-                {/* <div className="flex items-start">
-                  <MapPin className="w-5 h-5 mr-3 mt-0.5" />
-                  <address className="not-italic">
-                    P. No. 78, Karani Nagar,
-                    <br /> Jhotwara (302012), Jaipur,
-                    <br /> Rajasthan, India
-                  </address>
-                </div> */}
               </div>
 
               {/* Social */}
@@ -181,15 +156,14 @@ const RendererFooter = () => {
                     <ul className="space-y-3">
                       {group.links.map((l) => (
                         <li key={l.name}>
-                          {l.external ? (
-                            <a
-                              href={l.to}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                          {l.to.startsWith("/#") ? (
+                            <HashLink
+                              smooth
+                              to={l.to}
                               className="text-gray-700 hover:text-gray-900 transition-colors"
                             >
                               {l.name}
-                            </a>
+                            </HashLink>
                           ) : (
                             <Link
                               to={l.to}
@@ -208,16 +182,8 @@ const RendererFooter = () => {
           </div>
 
           {/* Bottom bar */}
-          <div className="mt-12 pt-6 border-t border-blue-100 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-gray-700">
+          <div className="mt-12 pt-6 border-t border-blue-100 flex justify-center items-center text-sm text-gray-700">
             <p>© {year} Airmailo. All rights reserved.</p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/privacy-policy" className="hover:text-blue-700">
-                Privacy Policy
-              </Link>
-              <Link to="/terms-of-service" className="hover:text-blue-700">
-                Terms of Service
-              </Link>
-            </div>
           </div>
         </div>
       </div>

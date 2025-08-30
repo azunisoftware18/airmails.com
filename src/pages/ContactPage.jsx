@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { submitContact } from "../redux/slices/homeSlice";
 import { useDispatch, useSelector } from "react-redux";
+import ScrollToTop from "../components/ScrollToTop";
 
 export default function ContactPage() {
   const [form, setForm] = useState({
@@ -53,6 +54,7 @@ export default function ContactPage() {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-12 my-16">
+      <ScrollToTop />
       <h1 className="text-3xl font-bold mb-2">Contact Us</h1>
       <p className="text-gray-600 mb-8">
         Queries ya demo chahiye? Form submit karo — hum jaldi reply karenge.

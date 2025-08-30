@@ -19,6 +19,7 @@ import { getAllCountUsers } from "../../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import TestimonialForm from "../../components/forms/TestimonialForm";
 import { allTestimonials } from "../../redux/slices/homeSlice";
+import ScrollToTop from "../../components/ScrollToTop";
 
 const LandingPage = () => {
   const [isShowTestimonial, setIsShowTestimonial] = React.useState(false);
@@ -97,6 +98,7 @@ const LandingPage = () => {
 
   return (
     <div className="pt-16">
+      {/* <ScrollToTop /> */}
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center bg-gray-50 my-12 sm:my-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
