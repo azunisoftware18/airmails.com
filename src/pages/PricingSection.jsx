@@ -42,7 +42,7 @@ export const PricingSection = ({
     {
       plan: "BASIC",
       // price: 5,
-      price: 0,
+      price: 1,
       features: {
         maxMailboxes: 10,
         maxDomains: 3,
