@@ -186,7 +186,11 @@ const RendererNavbar = () => {
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-200/50 bg-white/95 backdrop-blur-sm">
+            <div
+              className={`md:hidden py-4 border-t border-gray-200/50 bg-white/95 backdrop-blur-sm ${
+                currentUserData && "hidden"
+              }`}
+            >
               <div className="flex flex-col space-y-1">
                 <a
                   href="#features"
