@@ -53,12 +53,16 @@ export default function BillingPage() {
     if (!d) return null;
     const x = new Date(d);
     if (isNaN(x)) return null;
-    return new Date(Date.UTC(x.getUTCFullYear(), x.getUTCMonth(), x.getUTCDate()));
+    return new Date(
+      Date.UTC(x.getUTCFullYear(), x.getUTCMonth(), x.getUTCDate())
+    );
   };
 
   // Days left until next billing/endDate
   const daysLeft = useMemo(() => {
-    const end = subscriptionData?.endDate ? toUTCDateOnly(subscriptionData.endDate) : null;
+    const end = subscriptionData?.endDate
+      ? toUTCDateOnly(subscriptionData.endDate)
+      : null;
     const today = toUTCDateOnly(new Date());
     if (!end || !today) return null;
     return Math.ceil((end - today) / 86400000); // ms per day
@@ -72,8 +76,8 @@ export default function BillingPage() {
     // SAFE: invoices may be empty
     const firstInvoice = sub.invoices?.[0];
     const price =
-      (sub.plan === "BASIC" || sub.plan === "PREMIUM")
-        ? (firstInvoice?.amount ?? 0)
+      sub.plan === "BASIC" || sub.plan === "PREMIUM"
+        ? firstInvoice?.amount ?? 0
         : 0;
 
     const storageGb = sub.allowedStorageMB
@@ -118,8 +122,12 @@ export default function BillingPage() {
   }, [subscriptionData]);
 
   // Latest invoice gating for renew
-  const latestInvoiceStatus = (invoices?.[0]?.status || "").trim().toLowerCase();
-  const canRenewLatest = ["pending", "unpaid", "overdue"].includes(latestInvoiceStatus);
+  const latestInvoiceStatus = (invoices?.[0]?.status || "")
+    .trim()
+    .toLowerCase();
+  const canRenewLatest = ["pending", "unpaid", "overdue"].includes(
+    latestInvoiceStatus
+  );
 
   // Renew CTA if within 10 days OR the latest invoice needs action
   const showRenewCTA = useMemo(() => {
@@ -269,13 +277,13 @@ export default function BillingPage() {
       doc.text("INVOICE", pageW - M - 130, M + 46);
 
       // Status pill
-      const status = (invoice.status).toString().toLowerCase();
+      const status = invoice.status.toString().toLowerCase();
       const pillColor =
         status === "PAID"
           ? theme.success
           : status === "FAILED"
-            ? theme.danger
-            : theme.warning;
+          ? theme.danger
+          : theme.warning;
       const pillW = 90,
         pillH = 24,
         pillX = pageW - M - 130,
@@ -410,12 +418,12 @@ export default function BillingPage() {
         Array.isArray(invoice.items) && invoice.items.length
           ? invoice.items
           : [
-            {
-              description: "Service/Product",
-              quantity: 1,
-              amount: parseAmount(invoice.amount) || 0,
-            },
-          ];
+              {
+                description: "Service/Product",
+                quantity: 1,
+                amount: parseAmount(invoice.amount) || 0,
+              },
+            ];
 
       const maxDescWidth = cols.qty - (cols.desc + 12);
       const rowGap = 26;
@@ -622,7 +630,7 @@ export default function BillingPage() {
   };
 
   return (
-    <div >
+    <div>
       {/* Header */}
       <div className="mb-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <Header
@@ -901,11 +909,16 @@ export default function BillingPage() {
               const status = String(invoice.status || "")
                 .trim()
                 .toLowerCase();
-              const canRenew = ["pending", "unpaid", "overdue"].includes(status);
+              const canRenew = ["pending", "unpaid", "overdue"].includes(
+                status
+              );
               const isLatest = index === 0; // sorted = latest first
 
               return (
-                <div key={invoice.id} className="p-4 space-y-2 bg-white shadow-sm">
+                <div
+                  key={invoice.id}
+                  className="p-4 space-y-2 bg-white shadow-sm"
+                >
                   <div className="text-sm font-mono text-slate-700">
                     <strong>Invoice ID:</strong> {invoice.id}
                   </div>
@@ -943,21 +956,23 @@ export default function BillingPage() {
                       Download
                     </button>
 
-                    {showRenewCTA && canRenew && isLatest && (
-                      <button
-                        onClick={() =>
-                          handleRenewNow(
-                            { currentUserData: userData, subscriptionData },
-                            deps
-                          )
-                        }
-                        disabled={isProcessing}
-                        className="mt-2 inline-flex items-center gap-1.5 px-3 py-2 text-white bg-amber-500 hover:bg-amber-600 border border-amber-500 hover:border-amber-600 rounded-xl transition font-semibold disabled:opacity-50"
-                      >
-                        <Calendar className="h-4 w-4" />
-                        {isProcessing ? "Processing..." : "Renew"}
-                      </button>
-                    )}
+                    {showRenewCTA &&
+                      subscription.plan !== "FREE" &&
+                      isLatest && (
+                        <button
+                          onClick={() =>
+                            handleRenewNow(
+                              { currentUserData: userData, subscriptionData },
+                              deps
+                            )
+                          }
+                          disabled={isProcessing}
+                          className="mt-2 inline-flex items-center gap-1.5 px-3 py-2 text-white bg-amber-500 hover:bg-amber-600 border border-amber-500 hover:border-amber-600 rounded-xl transition font-semibold disabled:opacity-50"
+                        >
+                          <Calendar className="h-4 w-4" />
+                          {isProcessing ? "Processing..." : "Renew"}
+                        </button>
+                      )}
                   </div>
                 </div>
               );

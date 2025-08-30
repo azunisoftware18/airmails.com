@@ -72,6 +72,7 @@ export const createMailbox = (mailboxData) => async (dispatch) => {
       mailboxData
     );
     dispatch(mailboxSuccess(data));
+    dispatch(fetchMailboxes())
   } catch (err) {
     const errMsg = err?.response?.data?.message || err?.message;
     dispatch(mailboxFail(errMsg));
