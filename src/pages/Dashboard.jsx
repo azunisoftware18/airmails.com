@@ -49,7 +49,7 @@ const Dashboard = () => {
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [fechedDashboardData]);
 
   const data = {
     totalDomains: 0,
