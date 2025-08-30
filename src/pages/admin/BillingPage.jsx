@@ -13,6 +13,7 @@ import {
   AlertCircle,
   Activity,
 } from "lucide-react";
+import { HashLink } from "react-router-hash-link";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createOrRenewSubscriptionAction,
@@ -639,8 +640,9 @@ export default function BillingPage() {
           tagLine="Manage your plan, invoices, and payments in one sleek dashboard."
         />
 
-        <a
-          href="/#pricing"
+         <HashLink
+          smooth
+          to="/#pricing"
           className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 via-blue-700 to-purple-700 hover:from-blue-700 hover:via-blue-800 hover:to-purple-800 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 hover:-translate-y-1"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-40 group-hover:opacity-60 transition-opacity"></div>
@@ -655,7 +657,7 @@ export default function BillingPage() {
               className="opacity-70 group-hover:opacity-100 transition-opacity"
             />
           </div>
-        </a>
+        </HashLink>
       </div>
 
       <div className="flex flex-col gap-y-12">
@@ -982,12 +984,13 @@ export default function BillingPage() {
               <FileText className="mx-auto h-10 w-10 text-slate-300 mb-4" />
               No invoices available.
               <div className="mt-4">
-                <a
-                  href="/#pricing"
+                 <HashLink
+                  smooth
+                  to="/#pricing"
                   className="inline-flex items-center gap-1.5 px-3 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition font-semibold"
                 >
                   <Plus className="h-4 w-4" /> View Plans
-                </a>
+                 </HashLink>
               </div>
             </div>
           )}
